@@ -1,0 +1,72 @@
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  transition: var(--transition);
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius);
+  text-transform: capitalize;
+}
+.listItem:hover {
+  color: var(--clr-grey-5);
+  background: var(--clr-grey-10);
+}
+.listItem:hover .title {
+  color: var(--clr-grey-5);
+}
+
+.title {
+  margin-bottom: 0;
+  color: var(--clr-grey-1);
+  letter-spacing: 2px;
+  transition: var(--transition);
+}
+
+.editBtn,
+.deleteBtn,
+.completeBtn {
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  font-size: 0.7rem;
+  margin: 0 0.15rem;
+  transition: var(--transition);
+}
+.editBtn {
+  color: var(--clr-orange-light);
+}
+.editBtn:hover {
+  color: var(--clr-orange-dark);
+}
+.deleteBtn {
+  color: var(--clr-red-light);
+}
+.deletBtn:hover {
+  color: var(--clr-red-dark);
+}
+.completeBtn {
+  color: var(--clr-green-light);
+}
+.completeBtn :hover {
+  color: var(--clr-green-dark);
+}
+.clearBtn {
+  text-transform: capitalize;
+  width: 10rem;
+  height: 1.5rem;
+  display: grid;
+  align-items: center;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-red-light);
+  margin: 0 auto;
+  font-size: 0.85rem;
+  letter-spacing: var(--spacing);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 1.25rem;
+}
+.clearBtn:hover {
+  color: var(--clr-red-dark);
+}
