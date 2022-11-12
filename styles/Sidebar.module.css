@@ -12,8 +12,130 @@
   width: 100%;
   height: 100%;
   background: lightpink;
-  display: grid;
+  /* display: grid; */
   grid-template-rows: auto 1fr auto;
   row-gap: 1rem;
-  width: 30%;
+  width: 25%;
+}
+
+.sectionCenter {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 35rem;
+  margin-top: 8rem;
+}
+@media screen and (min-width: 992px) {
+  .sectionCenter {
+    width: 95vw;
+  }
+}
+
+.btn {
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--clr-black);
+  padding: 0.375rem 0.75rem;
+  letter-spacing: var(--spacing);
+  display: inline-block;
+  transition: var(--transition);
+  font-size: 0.875rem;
+  border: 2px solid var(--clr-black);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn:hover {
+  color: var(--clr-white);
+  background: var(--clr-black);
+}
+
+.btnContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 20px;
+  gap: 5%;
+}
+.newList {
+  height: 50px;
+  width: -webkit-fill-available;
+  border-radius: 50px;
+  border: 2px solid #f2f2f2;
+  background-color: #ffff;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  padding-right: 20px;
+  padding-left: 0px;
+  transition-duration: 0.4s;
+  border-left: none;
+  margin-bottom: 5%;
+}
+
+.editBtn,
+.deleteBtn,
+.completeBtn {
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  font-size: 0.7rem;
+  margin: 0 0.15rem;
+  transition: var(--transition);
+}
+.editBtn {
+  color: var(--clr-orange-light);
+}
+.editBtn:hover {
+  color: var(--clr-orange-dark);
+}
+.deleteBtn {
+  color: var(--clr-red-light);
+}
+.deletBtn:hover {
+  color: var(--clr-red-dark);
+}
+.completeBtn {
+  color: var(--clr-green-light);
+}
+.completeBtn :hover {
+  color: var(--clr-green-dark);
+}
+.clearBtn {
+  text-transform: capitalize;
+  width: 10rem;
+  height: 1.5rem;
+  display: grid;
+  align-items: center;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-red-light);
+  margin: 0 auto;
+  font-size: 0.85rem;
+  letter-spacing: var(--spacing);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 1.25rem;
+}
+.clearBtn:hover {
+  color: var(--clr-red-dark);
 }
