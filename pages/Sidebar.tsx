@@ -2,19 +2,20 @@ import { ReactComponentElement, useState } from "react";
 import styles from "../styles/Sidebar.module.css";
 import { FaPlus } from "react-icons/fa";
 import SideBarList from "./SideBarList";
+import { uuid } from "uuidv4";
 
 interface Lists {
-  lists: Array<List>;
   title: string;
   id: number;
-}
-interface List {
-  name: String;
-  id: Number;
 }
 
 const Sidebar = () => {
   const [listOfLists, setListOfLists] = useState<Array<Lists>>([]);
+  const [name, setName] = useState<string>("e.g. Grocery");
+
+  function handleChange(e: React.FormEvent<HTMLInputElement>) {
+    setName(e.currentTarget.value);
+  }
 
   function handleAdd(e: React.MouseEvent<HTMLInputElement>) {
     const newList = listOfLists.concat(
@@ -29,7 +30,13 @@ const Sidebar = () => {
         <h3>My Lists</h3>
       </div>
       <div className={styles.container}>
-        <button className={styles.btn} onClick={handleAdd}>
+        <input
+          type="text"
+          className={styles.input}
+          value={name}
+          onChange={handleChange}
+        />
+        <button className={styles.addBtn} onClick={handleAdd}>
           Add New List
           <FaPlus />
         </button>
@@ -40,7 +47,7 @@ const Sidebar = () => {
           const { title, id } = item;
           return (
             <article key={id} className={styles.newList}>
-              <SideBarList title={title} id={id} />
+              <SideBarList title={name} id={id} />
             </article>
           );
         })}

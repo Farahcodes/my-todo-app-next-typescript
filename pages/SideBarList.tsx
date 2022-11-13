@@ -9,7 +9,7 @@ interface SideBarListProp {
 const SideBarList = (props: SideBarListProp) => {
   return (
     <div className={styles.listsContainer}>
-      <div>New List</div>
+      <div>{props.title}</div>
       <div className={styles.container}>
         <button
           type="button"
