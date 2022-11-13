@@ -3,7 +3,7 @@ import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 
 interface SideBarListProp {
   title: string;
-  id: number;
+  id: string;
 }
 
 const SideBarList = (props: SideBarListProp) => {

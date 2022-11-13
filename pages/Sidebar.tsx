@@ -6,7 +6,7 @@ import { uuid } from "uuidv4";
 
 interface Lists {
   title: string;
-  id: number;
+  id: string;
 }
 
 const Sidebar = () => {
@@ -18,9 +18,7 @@ const Sidebar = () => {
   }
 
   function handleAdd(e: React.MouseEvent<HTMLInputElement>) {
-    const newList = listOfLists.concat(
-      <SideBarList key={listOfLists.length} />
-    );
+    const newList = listOfLists.concat(<SideBarList key={uuid()} />);
     setListOfLists(newList);
   }
 
@@ -47,7 +45,7 @@ const Sidebar = () => {
           const { title, id } = item;
           return (
             <article key={id} className={styles.newList}>
-              <SideBarList title={name} id={id} />
+              <SideBarList title={name} id={uuid()} />
             </article>
           );
         })}
