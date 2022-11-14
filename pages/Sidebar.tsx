@@ -3,6 +3,7 @@ import styles from "../styles/Sidebar.module.css";
 import { FaPlus } from "react-icons/fa";
 import SideBarList from "./SideBarList";
 import { uuid } from "uuidv4";
+import AddList from "./AddList";
 
 interface List {
   title: string;
@@ -30,16 +31,11 @@ const Sidebar = () => {
         <h3>My Lists</h3>
       </div>
       <div className={styles.container}>
-        <input
-          type="text"
-          className={styles.input}
-          value={name}
-          onChange={handleChange}
+        <AddList
+          name={name}
+          handleAdd={handleAdd}
+          handleChange={handleChange}
         />
-        <button className={styles.addBtn} onClick={handleAdd}>
-          Add New List
-          <FaPlus />
-        </button>
       </div>
 
       <div className={styles.listsContainer}>
