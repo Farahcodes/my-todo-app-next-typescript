@@ -12,7 +12,7 @@ const AddList = ({
   handleAdd: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
-    <div>
+    <div className={styles.container}>
       <input
         type="text"
         className={styles.input}
