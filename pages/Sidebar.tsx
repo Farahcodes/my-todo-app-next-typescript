@@ -4,21 +4,23 @@ import { FaPlus } from "react-icons/fa";
 import SideBarList from "./SideBarList";
 import { uuid } from "uuidv4";
 
-interface Lists {
+interface List {
   title: string;
   id: string;
 }
 
+type ListOfLists = List[];
+
 const Sidebar = () => {
-  const [listOfLists, setListOfLists] = useState<Array<Lists>>([]);
+  const [listOfLists, setListOfLists] = useState<ListOfLists>([]);
   const [name, setName] = useState<string>("e.g. Grocery");
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
     setName(e.currentTarget.value);
   }
 
-  function handleAdd(e: React.MouseEvent<HTMLInputElement>) {
-    const newList = listOfLists.concat(<SideBarList key={uuid()} />);
+  function handleAdd() {
+    const newList = listOfLists.concat({ id: uuid(), title: name });
     setListOfLists(newList);
   }
 
@@ -45,7 +47,7 @@ const Sidebar = () => {
           const { title, id } = item;
           return (
             <article key={id} className={styles.newList}>
-              <SideBarList title={name} id={uuid()} />
+              <SideBarList title={title} id={id} />
             </article>
           );
         })}
