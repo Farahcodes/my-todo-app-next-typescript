@@ -1,6 +1,5 @@
-import { ReactComponentElement, useState } from "react";
+import { useState } from "react";
 import styles from "../styles/Sidebar.module.css";
-import { FaPlus } from "react-icons/fa";
 import SideBarList from "./SideBarList";
 import { uuid } from "uuidv4";
 import AddList from "./AddList";
