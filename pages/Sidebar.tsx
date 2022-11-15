@@ -13,7 +13,6 @@ type ListOfLists = List[];
 
 const Sidebar = () => {
   const [listOfLists, setListOfLists] = useState<ListOfLists>([]);
-  const [data, setData] = useState<String>([]);
 
   function handleAdd() {
     const newList = listOfLists.concat({ id: uuid() });
