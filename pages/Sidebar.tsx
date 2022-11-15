@@ -13,14 +13,10 @@ type ListOfLists = List[];
 
 const Sidebar = () => {
   const [listOfLists, setListOfLists] = useState<ListOfLists>([]);
-  const [name, setName] = useState<string>("e.g. Grocery");
-
-  function handleChange(e: React.FormEvent<HTMLInputElement>) {
-    setName(e.currentTarget.value);
-  }
+  const [data, setData] = useState<String>([]);
 
   function handleAdd() {
-    const newList = listOfLists.concat({ id: uuid(), title: name });
+    const newList = listOfLists.concat({ id: uuid() });
     setListOfLists(newList);
   }
 
@@ -30,11 +26,7 @@ const Sidebar = () => {
         <h3>My Lists</h3>
       </div>
       <div className={styles.container}>
-        <AddList
-          name={name}
-          handleAdd={handleAdd}
-          handleChange={handleChange}
-        />
+        <AddList handleAdd={handleAdd} />
       </div>
 
       <div className={styles.listsContainer}>

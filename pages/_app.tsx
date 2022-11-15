@@ -2,9 +2,6 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { useState } from "react";
 
-interface IDProp {
-  id: number;
-}
 interface ItemProp {
   id: number;
   name: string;
@@ -19,9 +16,6 @@ export default function App({ Component, pageProps }: AppProps) {
     msg: "",
     type: "",
   });
-  const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
-    e.preventDefault();
-  };
 
   return <Component {...pageProps} />;
 }

@@ -3,20 +3,21 @@ import styles from "../styles/Sidebar.module.css";
 import { FaPlus } from "react-icons/fa";
 
 const AddList = ({
-  name,
-  handleChange,
   handleAdd,
 }: {
-  name: string;
-  handleChange: React.ChangeEventHandler<HTMLInputElement>;
   handleAdd: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
+  const [title, setTitle] = useState<string>("e.g. Grocery");
+
+  function handleChange(e: React.FormEvent<HTMLInputElement>) {
+    setTitle(e.currentTarget.value);
+  }
   return (
     <div className={styles.container}>
       <input
         type="text"
         className={styles.input}
-        value={name}
+        value={title}
         onChange={handleChange}
       />
       <button className={styles.addBtn} onClick={handleAdd}>
