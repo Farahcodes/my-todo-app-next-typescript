@@ -14,8 +14,8 @@ type ListOfLists = List[];
 const Sidebar = () => {
   const [listOfLists, setListOfLists] = useState<ListOfLists>([]);
 
-  function handleAdd() {
-    const newList = listOfLists.concat({ id: uuid() });
+  function handleAdd(title: string) {
+    const newList = listOfLists.concat({ id: uuid(), title });
     setListOfLists(newList);
   }
 
