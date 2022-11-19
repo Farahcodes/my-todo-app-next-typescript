@@ -4,6 +4,7 @@ import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 interface SideBarListProp {
   title: string;
   id: string;
+  handleEdit: () => void;
 }
 
 const SideBarList = (props: SideBarListProp) => {
@@ -14,7 +15,7 @@ const SideBarList = (props: SideBarListProp) => {
         <button
           type="button"
           className={styles.editBtn}
-          onClick={() => editList()}
+          onClick={() => handleEdit()}
         >
           <FaEdit />
         </button>
