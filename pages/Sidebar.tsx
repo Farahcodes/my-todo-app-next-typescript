@@ -13,17 +13,13 @@ type ListOfLists = List[];
 
 const Sidebar = () => {
   const [listOfLists, setListOfLists] = useState<ListOfLists>([]);
-  const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [currentList, setCurrentList] = useState<any>();
 
   function handleAdd(title: string) {
     const newList = listOfLists.concat({ id: uuid(), title });
     setListOfLists(newList);
   }
 
-  function handleEdit(title: string) {
-    setCurrentList({ ...currentList, title });
-  }
+  function handleEdit(title: string) {}
 
   return (
     <aside className={styles.sidebar}>
@@ -31,7 +27,7 @@ const Sidebar = () => {
         <h3>My Lists</h3>
       </div>
       <div className={styles.container}>
-        <AddList handleAdd={handleAdd} />
+        <AddList handleAdd={handleAdd} onChange={handleEdit} />
       </div>
 
       <div className={styles.listsContainer}>
