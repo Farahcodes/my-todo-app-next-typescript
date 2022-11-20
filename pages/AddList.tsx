@@ -14,6 +14,7 @@ const AddList = ({
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
     setTitle(e.currentTarget.value);
+    onChange(title);
   }
   function onClick() {
     handleAdd(title);

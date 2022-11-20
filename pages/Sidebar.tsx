@@ -19,7 +19,10 @@ const Sidebar = () => {
     setListOfLists(newList);
   }
 
-  function handleEdit(title: string) {}
+  function handleEdit(title: string, id: string) {
+    const specificList = listOfLists.find((list) => list.id === id);
+    setTitle(specificList.title);
+  }
 
   return (
     <aside className={styles.sidebar}>
