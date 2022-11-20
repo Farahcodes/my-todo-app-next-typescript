@@ -4,7 +4,6 @@ import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 interface SideBarListProp {
   title: string;
   id: string;
-  handleEdit: () => void;
 }
 
 const SideBarList = (props: SideBarListProp) => {

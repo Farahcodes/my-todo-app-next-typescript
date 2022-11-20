@@ -2,13 +2,7 @@ import { ReactComponentElement, useState } from "react";
 import styles from "../styles/Sidebar.module.css";
 import { FaPlus } from "react-icons/fa";
 
-const AddList = ({
-  handleAdd,
-  setUpdate,
-}: {
-  handleAdd: (title: string) => void;
-  setUpdate: (title: string, id: string) => void;
-}) => {
+const AddList = ({ handleAdd }: { handleAdd: (title: string) => void }) => {
   const [title, setTitle] = useState<string>("e.g. Grocery");
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
@@ -17,6 +11,7 @@ const AddList = ({
   function onClick() {
     handleAdd(title);
   }
+
   return (
     <div className={styles.container}>
       <input

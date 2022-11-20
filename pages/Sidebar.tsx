@@ -13,25 +13,16 @@ type ListOfLists = List[];
 
 const Sidebar = () => {
   const [listOfLists, setListOfLists] = useState<ListOfLists>([]);
-  const [editing, setEditing] = useState<boolean>(false);
-  function setUpdate(updatedTitle: string, id: string) {
-    listOfLists.map((list) => {
-      if (list.id === id) {
-        list.title = updatedTitle;
-      }
-      return list;
-    });
-  }
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [currentList, setCurrentList] = useState<any>();
 
   function handleAdd(title: string) {
     const newList = listOfLists.concat({ id: uuid(), title });
     setListOfLists(newList);
   }
 
-  function handleEdit(title: string, id: string) {
-    const specificList = listOfLists.find((list) => list.id === id);
-    setEditing(true);
-    setUpdate(specificList.title);
+  function handleEdit(title: string) {
+    setCurrentList({ ...currentList, title });
   }
 
   return (
@@ -40,7 +31,7 @@ const Sidebar = () => {
         <h3>My Lists</h3>
       </div>
       <div className={styles.container}>
-        <AddList handleAdd={handleAdd} setUpdate={setUpdate} />
+        <AddList handleAdd={handleAdd} />
       </div>
 
       <div className={styles.listsContainer}>
@@ -48,7 +39,7 @@ const Sidebar = () => {
           const { title, id } = item;
           return (
             <article key={id} className={styles.newList}>
-              <SideBarList title={title} id={id} handleEdit={handleEdit} />
+              <SideBarList title={title} id={id} />
             </article>
           );
         })}
