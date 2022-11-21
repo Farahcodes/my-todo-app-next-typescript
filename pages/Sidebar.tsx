@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "../styles/Sidebar.module.css";
 import SideBarList from "./SideBarList";
 import { uuid } from "uuidv4";
-import AddList from "./AddList";
+import AddList from "./FormList";
 
 interface List {
   title: string;
@@ -20,8 +20,12 @@ const Sidebar = () => {
   }
 
   function handleEdit(title: string, id: string) {
-    const specificList = listOfLists.find((list) => list.id === id);
-    setTitle(specificList.title);
+    const cloneListOfLists = [...listOfLists];
+    const specificList = cloneListOfLists.find((list) => list.id === id);
+    if (specificList) {
+      specificList.title = title;
+    }
+    setListOfLists(cloneListOfLists);
   }
 
   return (
@@ -30,7 +34,7 @@ const Sidebar = () => {
         <h3>My Lists</h3>
       </div>
       <div className={styles.container}>
-        <AddList handleAdd={handleAdd} onChange={handleEdit} />
+        <AddList handleAdd={handleAdd} />
       </div>
 
       <div className={styles.listsContainer}>
@@ -38,7 +42,7 @@ const Sidebar = () => {
           const { title, id } = item;
           return (
             <article key={id} className={styles.newList}>
-              <SideBarList title={title} id={id} />
+              <SideBarList title={title} onEdit={handleEdit} />
             </article>
           );
         })}
