@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "../styles/Sidebar.module.css";
 import SideBarList from "./SideBarList";
 import { uuid } from "uuidv4";
-import AddList from "./FormList";
+import FormList from "./FormList";
 
 interface List {
   title: string;
@@ -34,7 +34,7 @@ const Sidebar = () => {
         <h3>My Lists</h3>
       </div>
       <div className={styles.container}>
-        <AddList handleAdd={handleAdd} />
+        <FormList handleAdd={handleAdd} />
       </div>
 
       <div className={styles.listsContainer}>
@@ -42,7 +42,7 @@ const Sidebar = () => {
           const { title, id } = item;
           return (
             <article key={id} className={styles.newList}>
-              <SideBarList title={title} onEdit={handleEdit} />
+              <SideBarList title={title} handleEdit={handleEdit} />
             </article>
           );
         })}
