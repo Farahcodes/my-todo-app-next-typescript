@@ -1,6 +1,7 @@
 import styles from "../styles/SideBarList.module.css";
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 import { useState } from "react";
+import { uuid } from "uuidv4";
 
 interface SideBarListProp {
   title: string;
@@ -8,33 +9,38 @@ interface SideBarListProp {
 }
 
 const SideBarList = (props: SideBarListProp) => {
-  const [currentTitle, setCurrentTitle] = useState<string>();
+  const [newTitle, setNewTitle] = useState<string>();
   const [isEditing, setIsEditing] = useState<boolean>(false);
   function handleEditInputChange(e: React.FormEvent<HTMLInputElement>) {
-    setCurrentTitle(e.currentTarget.value);
-  }
-  function handleEditClick() {
-    setIsEditing(true);
-    props.handleEdit;
+    setNewTitle(e.currentTarget.value);
   }
 
+  function handleEditClick() {
+    setIsEditing(true);
+  }
+  function handleEditSubmit() {
+    let newTitle = props.title;
+    props.handleEdit(newTitle, uuid());
+  }
   return (
     <div className={styles.listsContainer}>
       {/* Conditional rendering based on if we are on edit mode  */}
       {isEditing ? (
         // if we are editing - display the edit title input
-        <div>
+        <form>
           <input
             name="editTitle"
             type="text"
-            placeholder="Edit title"
-            value={currentTitle}
+            placeholder="update title"
+            value={newTitle}
             onChange={handleEditInputChange}
           />
-          <button type="submit">Update</button>
+          <button type="submit" onClick={handleEditSubmit}>
+            Update
+          </button>
           {/* cancel editing mode */}
           <button onClick={() => setIsEditing(false)}>Cancel</button>
-        </div>
+        </form>
       ) : (
         // if we are not editing - display the current title through props
         <div>{props.title}</div>
