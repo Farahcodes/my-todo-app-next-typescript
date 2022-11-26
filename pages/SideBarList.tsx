@@ -1,6 +1,6 @@
 import styles from "../styles/SideBarList.module.css";
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { uuid } from "uuidv4";
 
 interface SideBarListProp {
@@ -18,10 +18,19 @@ const SideBarList = (props: SideBarListProp) => {
   function handleEditClick() {
     setIsEditing(true);
   }
-  function handleEditSubmit() {
+  function handleEditSubmit(e: any) {
+    e.preventDefault();
     let newTitle = props.title;
     props.handleEdit(newTitle, uuid());
+    // setNewTitle("");
+    // setIsEditing(false);
   }
+
+  useEffect(() => {
+    // storing input new title
+    localStorage.setItem("newTitle", JSON.stringify(newTitle));
+  }, [newTitle]);
+
   return (
     <div className={styles.listsContainer}>
       {/* Conditional rendering based on if we are on edit mode  */}
@@ -31,11 +40,11 @@ const SideBarList = (props: SideBarListProp) => {
           <input
             name="editTitle"
             type="text"
-            placeholder="update title"
+            placeholder={props.title}
             value={newTitle}
             onChange={handleEditInputChange}
           />
-          <button type="submit" onClick={handleEditSubmit}>
+          <button type="submit" onSubmit={handleEditSubmit}>
             Update
           </button>
           {/* cancel editing mode */}

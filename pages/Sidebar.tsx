@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../styles/Sidebar.module.css";
 import SideBarList from "./SideBarList";
 import { uuid } from "uuidv4";
@@ -27,6 +27,9 @@ const Sidebar = () => {
     }
     setListOfLists(cloneListOfLists);
   }
+  useEffect(() => {
+    localStorage.setItem("listOfLists", JSON.stringify(listOfLists));
+  }, [listOfLists]);
 
   return (
     <aside className={styles.sidebar}>
