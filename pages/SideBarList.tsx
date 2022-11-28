@@ -1,7 +1,6 @@
 import styles from "../styles/SideBarList.module.css";
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import { uuid } from "uuidv4";
 import { List } from "./Sidebar";
 
 interface SideBarListProp {
