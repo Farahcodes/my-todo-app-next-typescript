@@ -4,7 +4,7 @@ import SideBarList from "./SideBarList";
 import { uuid } from "uuidv4";
 import FormList from "./FormList";
 
-interface List {
+export interface List {
   title: string;
   id: string;
 }
@@ -20,6 +20,7 @@ const Sidebar = () => {
   }
 
   function handleEdit(title: string, id: string) {
+    console.log("hello");
     const cloneListOfLists = [...listOfLists];
     const specificList = cloneListOfLists.find((list) => list.id === id);
     if (specificList) {
@@ -45,7 +46,7 @@ const Sidebar = () => {
           const { title, id } = item;
           return (
             <article key={id} className={styles.newList}>
-              <SideBarList title={title} handleEdit={handleEdit} />
+              <SideBarList itemList={item} handleEdit={handleEdit} />
             </article>
           );
         })}

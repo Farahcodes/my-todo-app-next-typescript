@@ -2,14 +2,15 @@ import styles from "../styles/SideBarList.module.css";
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { uuid } from "uuidv4";
+import { List } from "./Sidebar";
 
 interface SideBarListProp {
-  title: string;
+  itemList: List;
   handleEdit: (title: string, id: string) => void;
 }
 
-const SideBarList = (props: SideBarListProp) => {
-  const [newTitle, setNewTitle] = useState<string>();
+const SideBarList = ({ handleEdit, itemList }: SideBarListProp) => {
+  const [newTitle, setNewTitle] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
   function handleEditInputChange(e: React.FormEvent<HTMLInputElement>) {
     setNewTitle(e.currentTarget.value);
@@ -20,10 +21,8 @@ const SideBarList = (props: SideBarListProp) => {
   }
   function handleEditSubmit(e: any) {
     e.preventDefault();
-    let newTitle = props.title;
-    props.handleEdit(newTitle, uuid());
-    // setNewTitle("");
-    // setIsEditing(false);
+    handleEdit(newTitle, itemList.id);
+    setIsEditing(false);
   }
 
   useEffect(() => {
@@ -40,11 +39,11 @@ const SideBarList = (props: SideBarListProp) => {
           <input
             name="editTitle"
             type="text"
-            placeholder={props.title}
+            placeholder={itemList.title}
             value={newTitle}
             onChange={handleEditInputChange}
           />
-          <button type="submit" onSubmit={handleEditSubmit}>
+          <button type="submit" onClick={handleEditSubmit}>
             Update
           </button>
           {/* cancel editing mode */}
@@ -52,7 +51,7 @@ const SideBarList = (props: SideBarListProp) => {
         </form>
       ) : (
         // if we are not editing - display the current title through props
-        <div>{props.title}</div>
+        <div>{itemList.title}</div>
       )}
 
       <div className={styles.container}>
