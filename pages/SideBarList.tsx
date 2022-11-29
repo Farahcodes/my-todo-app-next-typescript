@@ -63,11 +63,17 @@ const SideBarList = ({ handleEdit, itemList }: SideBarListProp) => {
             value={newTitle}
             onChange={handleEditInputChange}
           />
-          <button type="submit" onClick={handleEditSubmit}>
+          <button
+            type="submit"
+            onClick={handleEditSubmit}
+            className={styles.btn}
+          >
             Update
           </button>
           {/* cancel editing mode */}
-          <button onClick={() => setIsEditing(false)}>Cancel</button>
+          <button className={styles.btn} onClick={() => setIsEditing(false)}>
+            Cancel
+          </button>
         </form>
       ) : (
         // if we are not editing - display the current title through props
