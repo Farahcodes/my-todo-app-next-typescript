@@ -30,7 +30,6 @@ const SingleList = ({
     setItemName(e.currentTarget.value);
   }
   function handleAddItem() {
-    console.log("hello");
     const newItem = { id: uuid(), title: itemName };
     setList([...list, newItem]);
   }
