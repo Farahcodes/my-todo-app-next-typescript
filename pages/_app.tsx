@@ -8,14 +8,5 @@ interface ItemProp {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [name, setName] = useState<string>("");
-  const [list, setList] = useState<Array<ItemProp>>([]);
-  const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [alert, setAlert] = useState<Object>({
-    show: false,
-    msg: "",
-    type: "",
-  });
-
   return <Component {...pageProps} />;
 }
