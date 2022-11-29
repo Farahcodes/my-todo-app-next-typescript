@@ -77,7 +77,7 @@
 .grocery {
   padding: 0.25rem;
   padding-left: 1rem;
-  background: var(--clr-grey-10);
+  background: white;
   border-top-left-radius: var(--radius);
   border-bottom-left-radius: var(--radius);
   border-color: transparent;
@@ -110,5 +110,57 @@
   color: var(--clr-white);
 }
 .section {
+}
+.container {
+  padding: 0 2rem;
+}
+.singleListContainer {
   width: 60%;
+}
+.editBtn,
+.deleteBtn,
+.completeBtn {
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  font-size: 0.7rem;
+  margin: 0 0.15rem;
+  transition: var(--transition);
+}
+.editBtn {
+  color: var(--clr-orange-light);
+}
+.editBtn:hover {
+  color: var(--clr-orange-dark);
+}
+.deleteBtn {
+  color: var(--clr-red-light);
+}
+.deletBtn:hover {
+  color: var(--clr-red-dark);
+}
+.completeBtn {
+  color: var(--clr-green-light);
+}
+.completeBtn :hover {
+  color: var(--clr-green-dark);
+}
+.clearBtn {
+  text-transform: capitalize;
+  width: 10rem;
+  height: 1.5rem;
+  display: grid;
+  align-items: center;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-red-light);
+  margin: 0 auto;
+  font-size: 0.85rem;
+  letter-spacing: var(--spacing);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 1.25rem;
+}
+.clearBtn:hover {
+  color: var(--clr-red-dark);
 }

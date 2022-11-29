@@ -20,7 +20,6 @@ const Sidebar = () => {
   }
 
   function handleEdit(title: string, id: string) {
-    console.log("hello");
     const cloneListOfLists = [...listOfLists];
     const specificList = cloneListOfLists.find((list) => list.id === id);
     if (specificList) {

@@ -105,11 +105,11 @@ const SideBarList = ({
         >
           <FaTrash />
         </button>
-        <button type="button">
+        <div>
           <Link href="#">
             <FcViewDetails />
           </Link>
-        </button>
+        </div>
       </div>
     </div>
   );
