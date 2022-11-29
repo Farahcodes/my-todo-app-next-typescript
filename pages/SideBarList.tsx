@@ -1,5 +1,5 @@
 import styles from "../styles/SideBarList.module.css";
-import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { List } from "./Sidebar";
 import Alert from "./Alert";
@@ -102,9 +102,6 @@ const SideBarList = ({
           onClick={handleDeleteClick}
         >
           <FaTrash />
-        </button>
-        <button type="button" className={styles.completeBtn}>
-          <FaCheck />
         </button>
       </div>
     </div>
