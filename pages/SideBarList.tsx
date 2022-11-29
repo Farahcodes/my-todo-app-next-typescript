@@ -7,9 +7,14 @@ import Alert from "./Alert";
 interface SideBarListProp {
   itemList: List;
   handleEdit: (title: string, id: string) => void;
+  handleDelete: (id: string) => void;
 }
 
-const SideBarList = ({ handleEdit, itemList }: SideBarListProp) => {
+const SideBarList = ({
+  handleEdit,
+  itemList,
+  handleDelete,
+}: SideBarListProp) => {
   const [newTitle, setNewTitle] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [alert, setAlert] = useState<any>({
@@ -37,6 +42,9 @@ const SideBarList = ({ handleEdit, itemList }: SideBarListProp) => {
     } else {
       showAlert(true, "success", "title updated");
     }
+  }
+  function handleDeleteClick() {
+    handleDelete(itemList.id);
   }
 
   function showAlert(show = false, type = "", msg = "") {
@@ -88,7 +96,11 @@ const SideBarList = ({ handleEdit, itemList }: SideBarListProp) => {
         >
           <FaEdit />
         </button>
-        <button type="button" className={styles.deleteBtn}>
+        <button
+          type="button"
+          className={styles.deleteBtn}
+          onClick={handleDeleteClick}
+        >
           <FaTrash />
         </button>
         <button type="button" className={styles.completeBtn}>

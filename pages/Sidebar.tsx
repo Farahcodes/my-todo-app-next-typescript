@@ -28,6 +28,11 @@ const Sidebar = () => {
     }
     setListOfLists(cloneListOfLists);
   }
+
+  function handleDelete(id: string) {
+    const cloneListOfLists = [...listOfLists];
+    setListOfLists(cloneListOfLists.filter((list) => list.id !== id));
+  }
   useEffect(() => {
     localStorage.setItem("listOfLists", JSON.stringify(listOfLists));
   }, [listOfLists]);
@@ -46,7 +51,11 @@ const Sidebar = () => {
           const { title, id } = item;
           return (
             <article key={id} className={styles.newList}>
-              <SideBarList itemList={item} handleEdit={handleEdit} />
+              <SideBarList
+                itemList={item}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
             </article>
           );
         })}
