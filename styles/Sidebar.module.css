@@ -77,7 +77,7 @@
   gap: 5%;
 }
 .newList {
-  height: 60px;
+  height: auto;
   width: -webkit-fill-available;
   border-radius: 50px;
   border: 2px solid #f2f2f2;
