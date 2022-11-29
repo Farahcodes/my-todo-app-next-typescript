@@ -25,15 +25,22 @@ const SideBarList = ({ handleEdit, itemList }: SideBarListProp) => {
   function handleEditClick() {
     setIsEditing(true);
   }
+
   function handleEditSubmit(e: any) {
     e.preventDefault();
     if (!newTitle) {
       showAlert(true, "danger", "please enter value");
     } else if (newTitle && isEditing) {
       handleEdit(newTitle, itemList.id);
+      setIsEditing(false);
+      showAlert(true, "success", "title updated");
+    } else {
+      showAlert(true, "success", "title updated");
     }
-    setIsEditing(false);
-    showAlert(true, "success", "title updated");
+  }
+
+  function showAlert(show = false, type = "", msg = "") {
+    setAlert({ show, type, msg });
   }
 
   useEffect(() => {
@@ -41,23 +48,18 @@ const SideBarList = ({ handleEdit, itemList }: SideBarListProp) => {
     localStorage.setItem("newTitle", JSON.stringify(newTitle));
   }, [newTitle]);
 
-  function showAlert(show = false, type = "", msg = "") {
-    setAlert({ show, type, msg });
-  }
-
   return (
     <div className={styles.listsContainer}>
+      {alert.show && (
+        <Alert {...alert} removeAlert={showAlert} itemList={itemList} />
+      )}
       {/* Conditional rendering based on if we are on edit mode  */}
       {isEditing ? (
         // if we are editing - display the edit title input
-        <form>
-          {alert.show && (
-            <Alert {...alert} removeAlert={showAlert} itemList={itemList} />
-          )}
+        <form className={styles.container}>
           <input
             name="editTitle"
             type="text"
-            placeholder={itemList.title}
             value={newTitle}
             onChange={handleEditInputChange}
           />

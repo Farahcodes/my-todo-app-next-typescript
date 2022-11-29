@@ -3,7 +3,7 @@ import styles from "../styles/Sidebar.module.css";
 import { FaPlus } from "react-icons/fa";
 
 const FormList = ({ handleAdd }: { handleAdd: (title: string) => void }) => {
-  const [title, setTitle] = useState<string>("");
+  const [title, setTitle] = useState<string>("e.g. Grocery");
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
     setTitle(e.currentTarget.value);
