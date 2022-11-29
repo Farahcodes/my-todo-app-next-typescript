@@ -2,6 +2,7 @@ import styles from "../styles/SideBarList.module.css";
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { List } from "./Sidebar";
+import Alert from "./Alert";
 
 interface SideBarListProp {
   itemList: List;
@@ -11,6 +12,12 @@ interface SideBarListProp {
 const SideBarList = ({ handleEdit, itemList }: SideBarListProp) => {
   const [newTitle, setNewTitle] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [alert, setAlert] = useState<any>({
+    show: false,
+    msg: "",
+    type: "",
+  });
+
   function handleEditInputChange(e: React.FormEvent<HTMLInputElement>) {
     setNewTitle(e.currentTarget.value);
   }
@@ -20,8 +27,13 @@ const SideBarList = ({ handleEdit, itemList }: SideBarListProp) => {
   }
   function handleEditSubmit(e: any) {
     e.preventDefault();
-    handleEdit(newTitle, itemList.id);
+    if (!newTitle) {
+      showAlert(true, "danger", "please enter value");
+    } else if (newTitle && isEditing) {
+      handleEdit(newTitle, itemList.id);
+    }
     setIsEditing(false);
+    showAlert(true, "success", "title updated");
   }
 
   useEffect(() => {
@@ -29,12 +41,19 @@ const SideBarList = ({ handleEdit, itemList }: SideBarListProp) => {
     localStorage.setItem("newTitle", JSON.stringify(newTitle));
   }, [newTitle]);
 
+  function showAlert(show = false, type = "", msg = "") {
+    setAlert({ show, type, msg });
+  }
+
   return (
     <div className={styles.listsContainer}>
       {/* Conditional rendering based on if we are on edit mode  */}
       {isEditing ? (
         // if we are editing - display the edit title input
         <form>
+          {alert.show && (
+            <Alert {...alert} removeAlert={showAlert} itemList={itemList} />
+          )}
           <input
             name="editTitle"
             type="text"
