@@ -1,8 +1,10 @@
 import styles from "../styles/SideBarList.module.css";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { FcViewDetails } from "react-icons/fc";
 import { useState, useEffect } from "react";
 import { List } from "./Sidebar";
 import Alert from "./Alert";
+import Link from "next/link";
 
 interface SideBarListProp {
   itemList: List;
@@ -102,6 +104,9 @@ const SideBarList = ({
           onClick={handleDeleteClick}
         >
           <FaTrash />
+        </button>
+        <button type="button">
+          <FcViewDetails />
         </button>
       </div>
     </div>
