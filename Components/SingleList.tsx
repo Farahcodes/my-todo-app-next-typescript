@@ -33,6 +33,11 @@ const SingleList = ({
     const newItem = { id: uuid(), title: itemName };
     setList([...list, newItem]);
   }
+
+  function handleSubmitNewItem(e: any) {
+    e.preventDefault();
+    handleAddItem();
+  }
   return (
     <section>
       {/* Form */}
@@ -49,7 +54,7 @@ const SingleList = ({
           <button
             type="submit"
             className={styles.submitBtn}
-            onClick={handleAddItem}
+            onClick={handleSubmitNewItem}
           >
             Add Item
           </button>
