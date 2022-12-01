@@ -2,16 +2,17 @@ import styles from "../styles/SingleList.module.css";
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 import { useState } from "react";
 import { uuid } from "uuidv4";
+import AddNewItemForm from "./AddNewItemForm";
 
-interface List {
+export interface List {
   title: string;
   id: string;
 }
-interface Item {
+export interface Item {
   id: string;
   title: string;
 }
-type Items = Item[];
+export type Items = Item[];
 const SingleList = ({
   items,
   removeItem,
@@ -24,43 +25,15 @@ const SingleList = ({
   completeItem: Function;
 }) => {
   const [list, setList] = useState<Items>([]);
-  const [itemName, setItemName] = useState<string>("e.g.Eggs");
 
-  function handleChange(e: React.FormEvent<HTMLInputElement>) {
-    setItemName(e.currentTarget.value);
-  }
-  function handleAddItem() {
-    const newItem = { id: uuid(), title: itemName };
+  function handleAddItem(title: string) {
+    const newItem = { id: uuid(), title };
     setList([...list, newItem]);
   }
 
-  function handleSubmitNewItem(e: any) {
-    e.preventDefault();
-    handleAddItem();
-  }
   return (
     <section>
-      {/* Form */}
-      <form className={styles.container}>
-        <h3>My List</h3>
-        <div className={styles.formControl}>
-          <input
-            type="text"
-            className={styles.grocery}
-            placeholder=""
-            value={itemName}
-            onChange={handleChange}
-          />
-          <button
-            type="submit"
-            className={styles.submitBtn}
-            onClick={handleSubmitNewItem}
-          >
-            Add Item
-          </button>
-        </div>
-      </form>
-      {/* End of form */}
+      <AddNewItemForm handleAddItem={handleAddItem} />
       {/* List */}
       <div className={styles.list}>
         {list.map((item) => {
