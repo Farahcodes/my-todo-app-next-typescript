@@ -3,6 +3,7 @@ import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 import { useState } from "react";
 import { uuid } from "uuidv4";
 import AddNewItemForm from "./AddNewItemForm";
+import Alert from "./Alert";
 
 export interface List {
   title: string;
@@ -25,6 +26,12 @@ const SingleList = ({
   completeItem: Function;
 }) => {
   const [list, setList] = useState<Items>([]);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [alert, setAlert] = useState<any>({
+    show: false,
+    msg: "",
+    type: "",
+  });
 
   function handleAddItem(title: string) {
     const newItem = { id: uuid(), title };
