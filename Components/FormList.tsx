@@ -4,13 +4,7 @@ import { FaPlus } from "react-icons/fa";
 import Alert from "./Alert";
 import { List } from "./Sidebar";
 
-const FormList = ({
-  handleAdd,
-  itemList,
-}: {
-  handleAdd: (title: string) => void;
-  itemList: List;
-}) => {
+const FormList = ({ handleAdd }: { handleAdd: (title: string) => void }) => {
   const [title, setTitle] = useState<string>("e.g. Grocery");
   const [alert, setAlert] = useState<any>({
     show: false,
@@ -36,9 +30,7 @@ const FormList = ({
 
   return (
     <div className={styles.container}>
-      {alert.show && (
-        <Alert {...alert} removeAlert={showAlert} itemList={itemList} />
-      )}
+      {alert.show && <Alert {...alert} removeAlert={showAlert} />}
       <input
         type="text"
         className={styles.input}
