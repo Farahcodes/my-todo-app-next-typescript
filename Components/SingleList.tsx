@@ -14,6 +14,7 @@ export interface Item {
   title: string;
 }
 export type Items = Item[];
+
 const SingleList = ({
   items,
   removeItem,
@@ -32,6 +33,10 @@ const SingleList = ({
     msg: "",
     type: "",
   });
+
+  function showAlert(show = false, type = "", msg = "") {
+    setAlert({ show, type, msg });
+  }
 
   function handleAddItem(title: string) {
     const newItem = { id: uuid(), title };

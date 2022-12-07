@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "../styles/AddNewItemForm.module.css";
 import { useState } from "react";
+import Alert from "./Alert";
+
 import { Items } from "./SingleList";
-import { uuid } from "uuidv4";
 
 const AddNewItemForm = ({
   handleAddItem,
@@ -10,19 +11,35 @@ const AddNewItemForm = ({
   handleAddItem: (title: string) => void;
 }) => {
   const [itemName, setItemName] = useState<string>("e.g.Eggs");
+  const [alert, setAlert] = useState<any>({
+    show: false,
+    msg: "",
+    type: "",
+  });
+
+  function showAlert(show = false, type = "", msg = "") {
+    setAlert({ show, type, msg });
+  }
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
     setItemName(e.currentTarget.value);
   }
   function handleSubmitNewItem(e: any) {
     e.preventDefault();
-    handleAddItem(itemName);
+    if (!itemName) {
+      showAlert(true, "danger", "please enter value");
+    } else {
+      handleAddItem(itemName);
+      showAlert(true, "success", "new item added");
+    }
   }
 
   return (
     <section>
       {/* Form */}
       <form className={styles.container}>
+        {alert.show && <Alert {...alert} removeAlert={showAlert} />}
+
         <h3>My List</h3>
         <div className={styles.formControl}>
           <input
