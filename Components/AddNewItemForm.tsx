@@ -40,7 +40,7 @@ const AddNewItemForm = ({
       <form className={styles.container}>
         {alert.show && <Alert {...alert} removeAlert={showAlert} />}
 
-        <h3>My List</h3>
+        <h3 className={styles.title}>My List</h3>
         <div className={styles.formControl}>
           <input
             type="text"

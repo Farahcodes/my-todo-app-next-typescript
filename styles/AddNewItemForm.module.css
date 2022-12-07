@@ -164,3 +164,11 @@
 .clearBtn:hover {
   color: var(--clr-red-dark);
 }
+.title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.formControl {
+  margin-bottom: 20px;
+}
