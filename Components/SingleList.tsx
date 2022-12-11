@@ -49,7 +49,7 @@ const SingleList = ({
     if (specificItem) {
       specificItem.title = title;
     }
-    setIsEditing(cloneList);
+    setList(cloneList);
   }
 
   return (
