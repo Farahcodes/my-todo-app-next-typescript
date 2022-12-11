@@ -43,6 +43,15 @@ const SingleList = ({
     setList([...list, newItem]);
   }
 
+  function handleEditItem(title: string, id: string) {
+    const cloneList = [...list];
+    const specificItem = cloneList.find((item) => item.id === id);
+    if (specificItem) {
+      specificItem.title = title;
+    }
+    setIsEditing(cloneList);
+  }
+
   return (
     <section>
       <AddNewItemForm handleAddItem={handleAddItem} />

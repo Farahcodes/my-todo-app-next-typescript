@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Sidebar.module.css";
 import SideBarList from "./SideBarList";
 import { uuid } from "uuidv4";
-import FormList from "./FormList";
+import AddNewListForm from "./AddNewListForm";
 
 export interface List {
   title: string;
@@ -42,7 +42,7 @@ const Sidebar = () => {
         <h3>My Lists</h3>
       </div>
       <div className={styles.container}>
-        <FormList handleAdd={handleAdd} />
+        <AddNewListForm handleAdd={handleAdd} />
       </div>
 
       <div className={styles.listsContainer}>

@@ -4,7 +4,11 @@ import { FaPlus } from "react-icons/fa";
 import Alert from "./Alert";
 import { List } from "./Sidebar";
 
-const FormList = ({ handleAdd }: { handleAdd: (title: string) => void }) => {
+const AddNewListForm = ({
+  handleAdd,
+}: {
+  handleAdd: (title: string) => void;
+}) => {
   const [title, setTitle] = useState<string>("e.g. Grocery");
   const [alert, setAlert] = useState<any>({
     show: false,
@@ -45,4 +49,4 @@ const FormList = ({ handleAdd }: { handleAdd: (title: string) => void }) => {
   );
 };
 
-export default FormList;
+export default AddNewListForm;
