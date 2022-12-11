@@ -9,9 +9,14 @@ import { Item } from "./SingleList";
 interface SingleItemProp {
   item: Item;
   handleEditItem: (title: string, id: string) => void;
+  handleDeleteItem: (id: string) => void;
 }
 
-const SingleItem = ({ item, handleEditItem }: SingleItemProp) => {
+const SingleItem = ({
+  item,
+  handleEditItem,
+  handleDeleteItem,
+}: SingleItemProp) => {
   const [newTitle, setNewTitle] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [alert, setAlert] = useState<any>({
@@ -41,6 +46,10 @@ const SingleItem = ({ item, handleEditItem }: SingleItemProp) => {
       setIsEditing(false);
       showAlert(true, "success", "title updated");
     }
+  }
+
+  function handleDeleteClick() {
+    handleDeleteItem(item.id);
   }
 
   return (
@@ -84,7 +93,7 @@ const SingleItem = ({ item, handleEditItem }: SingleItemProp) => {
         <button
           type="button"
           className={styles.deleteBtn}
-          //   onClick={() => removeItem(item.id)}
+          onClick={handleDeleteClick}
         >
           <FaTrash />
         </button>

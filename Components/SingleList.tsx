@@ -31,6 +31,11 @@ const SingleList = () => {
     setList(cloneList);
   }
 
+  function handleDeleteItem(id: string) {
+    const cloneList = [...list];
+    setList(cloneList.filter((item) => item.id !== id));
+  }
+
   return (
     <section>
       <AddNewItemForm handleAddItem={handleAddItem} />
@@ -40,7 +45,11 @@ const SingleList = () => {
           const { id, title } = item;
           return (
             <article key={id}>
-              <SingleItem item={item} handleEditItem={handleEditItem} />
+              <SingleItem
+                item={item}
+                handleEditItem={handleEditItem}
+                handleDeleteItem={handleDeleteItem}
+              />
             </article>
           );
         })}
