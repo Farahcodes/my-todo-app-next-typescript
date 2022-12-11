@@ -2,7 +2,6 @@ import styles from "../styles/SingleList.module.css";
 import { useState } from "react";
 import { uuid } from "uuidv4";
 import AddNewItemForm from "./AddNewItemForm";
-import Alert from "./Alert";
 import SingleItem from "./SingleItem";
 
 export interface List {
@@ -15,27 +14,8 @@ export interface Item {
 }
 export type Items = Item[];
 
-const SingleList = ({
-  items,
-  removeItem,
-  editItem,
-  completeItem,
-}: {
-  items: Array<Item>;
-  removeItem: Function;
-  editItem: Function;
-  completeItem: Function;
-}) => {
+const SingleList = () => {
   const [list, setList] = useState<Items>([]);
-  const [alert, setAlert] = useState<any>({
-    show: false,
-    msg: "",
-    type: "",
-  });
-
-  function showAlert(show = false, type = "", msg = "") {
-    setAlert({ show, type, msg });
-  }
 
   function handleAddItem(title: string) {
     const newItem = { id: uuid(), title };
