@@ -1,9 +1,9 @@
 import styles from "../styles/SingleList.module.css";
-import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 import { useState } from "react";
 import { uuid } from "uuidv4";
 import AddNewItemForm from "./AddNewItemForm";
 import Alert from "./Alert";
+import SingleItem from "./SingleItem";
 
 export interface List {
   title: string;
@@ -60,31 +60,8 @@ const SingleList = ({
         {list.map((item) => {
           const { id, title } = item;
           return (
-            <article className={styles.listItem} key={id}>
-              <p className={styles.title}>{title}</p>
-              <div className={styles.btnContainer}>
-                <button
-                  type="button"
-                  className={styles.editBtn}
-                  onClick={() => editItem(id)}
-                >
-                  <FaEdit />
-                </button>
-                <button
-                  type="button"
-                  className={styles.deleteBtn}
-                  onClick={() => removeItem(id)}
-                >
-                  <FaTrash />
-                </button>
-                <button
-                  type="button"
-                  className={styles.completeBtn}
-                  onClick={() => completeItem(id)}
-                >
-                  <FaCheck />
-                </button>
-              </div>
+            <article key={id}>
+              <SingleItem item={item} />
             </article>
           );
         })}
