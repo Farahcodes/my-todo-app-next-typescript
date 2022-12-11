@@ -8,6 +8,7 @@
   border-radius: 0.25rem;
   letter-spacing: var(--spacing);
   text-transform: capitalize;
+  align-content: center;
 }
 .alertDanger {
   color: #721c24;

@@ -27,7 +27,6 @@ const SingleList = ({
   completeItem: Function;
 }) => {
   const [list, setList] = useState<Items>([]);
-  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [alert, setAlert] = useState<any>({
     show: false,
     msg: "",
@@ -61,7 +60,7 @@ const SingleList = ({
           const { id, title } = item;
           return (
             <article key={id}>
-              <SingleItem item={item} />
+              <SingleItem item={item} handleEditItem={handleEditItem} />
             </article>
           );
         })}
