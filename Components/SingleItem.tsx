@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../styles/SingleItem.module.css";
 import Alert from "./Alert";
+import CheckBoxForm from "./CheckBoxForm";
 
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 
@@ -24,6 +25,7 @@ const SingleItem = ({
     msg: "",
     type: "",
   });
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   function showAlert(show = false, type = "", msg = "") {
     setAlert({ show, type, msg });
@@ -52,6 +54,9 @@ const SingleItem = ({
     handleDeleteItem(item.id);
   }
 
+  function handleCheck() {
+    setIsChecked(true);
+  }
   return (
     <div className={styles.listItem}>
       {alert.show && <Alert {...alert} removeAlert={showAlert} item={item} />}
@@ -100,9 +105,9 @@ const SingleItem = ({
         <button
           type="button"
           className={styles.completeBtn}
-          //   onClick={() => completeItem(item.id)}
+          onClick={handleCheck}
         >
-          <FaCheck />
+          <CheckBoxForm isChecked={isChecked} />
         </button>
       </div>
     </div>
