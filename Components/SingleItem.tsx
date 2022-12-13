@@ -54,8 +54,9 @@ const SingleItem = ({
     handleDeleteItem(item.id);
   }
 
-  function handleCheck() {
-    setIsChecked(true);
+  function handleCheck(e: any) {
+    setIsChecked(e.target.checked);
+    setIsChecked(!isChecked);
   }
   return (
     <div className={styles.listItem}>
@@ -107,7 +108,7 @@ const SingleItem = ({
           className={styles.completeBtn}
           onClick={handleCheck}
         >
-          <CheckBoxForm isChecked={isChecked} />
+          <CheckBoxForm handleCheck={handleCheck} isChecked={isChecked} />
         </button>
       </div>
     </div>

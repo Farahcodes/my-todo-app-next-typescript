@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 
 interface CheckBoxProps {
+  handleCheck: (e: any) => void;
   isChecked: boolean;
 }
 
-const CheckBoxForm = ({ isChecked }: CheckBoxProps) => {
-  const [checked, setChecked] = useState(false);
+const CheckBoxForm = ({ handleCheck, isChecked }: CheckBoxProps) => {
   return (
     <form>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={(e) => setChecked(e.target.checked)}
-      />
+      <input type="checkbox" checked={isChecked} onChange={handleCheck} />
     </form>
   );
 };
