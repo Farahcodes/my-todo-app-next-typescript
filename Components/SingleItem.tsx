@@ -55,7 +55,6 @@ const SingleItem = ({
   }
 
   function handleCheck(e: any) {
-    setIsChecked(e.target.checked);
     setIsChecked(!isChecked);
   }
   return (
@@ -86,7 +85,9 @@ const SingleItem = ({
         </form>
       ) : (
         // if we are not editing - display the current title through props
-        <p className={styles.title}>{item.title}</p>
+        <p className={` title ${isChecked ? "item-checked" : ""}`}>
+          {item.title}
+        </p>
       )}
       <div className={styles.btnContainer}>
         <button
